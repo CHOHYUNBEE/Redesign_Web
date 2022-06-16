@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,shrink-to-fit=no">
+    <title>position연습6</title>
+    <link rel="stylesheet" href="../../common/minireset.css">
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <style>
+        @font-face {
+            font-family: 'OTWelcomeBA';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeBA.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'OTWelcomeRA';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* 기본 & 공통 */
+        body {
+            margin: 0;
+            text-align: center;
+            font-family: 'OTWelcomeRA', 돋움, sans-serif;
+        }
+
+        .list {
+            font-size: 1.3rem;
+            list-style: none;
+            width: 100%;
+        }
+
+        .list ul {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .list ul li {
+            width: 20%;
+        }
+
+        .list ul li a {
+            display: block;
+        }
+
+        /* header */
+        #header {
+            margin: 40px auto;
+            width: 90%;
+            height: 20vh;
+        }
+
+        #header_content {
+            display: grid;
+            grid-template-columns: 2fr 4fr 1fr;
+        }
+
+        #header_content #logo img {
+            width: 12vw;
+            display: flex;
+            /* height: 8vh; */
+        }
+
+        #header_content .list #gnb a {
+            color: black;
+        }
+
+        #header_content #register {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        #header_content #register .register_img img {
+            width: 60%;
+        }
+
+        #header_bg {
+            width: 100%;
+            height: 40vh;
+            margin-top: 5vh;
+            background: url(./images/main_img_수정.png) no-repeat;
+            background-size: cover;
+
+            display: grid;
+            place-items: center;
+        }
+
+        #header_bg #header_bg_txt h2 {
+            color: white;
+            font-size: 2rem;
+        }
+
+        #header_bg #header_bg_txt p {
+            color: #ddd;
+            font-size: 1.1rem;
+            margin-top: 5vh;
+        }
+
+        /* header */
+
+        /* container */
+
+        /* container - TXT */
+        #container {
+            margin: 40vh auto;
+            width: 90%;
+        }
+
+        .container_txt h2 {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .container_txt p {
+            margin-top: 3vh;
+            color: rgb(116, 116, 116);
+        }
+
+        #container_txt input {
+            background-color: white;
+            border: 1px solid rgb(116, 116, 116);
+            color: rgb(116, 116, 116);
+            width: 12vh;
+            margin-top: 3vh;
+            line-height: 30px;
+        }
+
+        /* container - TXT*/
+
+        /* container - PRODUCT */
+        #container_product {
+            margin-top: 5vh;
+            background-color: #ddd;
+            height: auto;
+            overflow: hidden;
+            position: relative;
+        }
+        #container_product_content{
+            height: 120vh;
+        }
+
+        #product_txt {
+            position: absolute;
+            top: 10vh;
+            left: 50%;
+            transform: translatex(-50%);
+        }
+
+        #product_txt h2 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        #product_txt p {
+            margin-top: 3vh;
+        }
+
+        #product_img {
+            width: 80%;
+            margin: 0 auto;
+            position: absolute;
+            top: 25vh;
+            left: 50%;
+            transform: translatex(-50%);
+        }
+
+        #product_img td {
+            width: 30%;
+            color: white;
+            padding: 1px;
+        }
+
+        #product_img td img {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+        }
+
+        #product_img #productcontent {
+            background-color: orange;
+        }
+
+        #productcontent h2 {
+            font-size: 1.5rem;
+        }
+
+        #productcontent p {
+            margin-top: 3vh;
+            font-size: 0.9rem;
+        }
+
+        #productcontent input {
+            width: 5vh;
+            height: 5vh;
+            border: none;
+            border-radius: 50%;
+            margin-top: 1vh;
+            font-weight: bold;
+            color: orange;
+        }
+
+        /* container - PRODUCT */
+
+        /* container - SOCIAL */
+        #social_txt {
+            margin-top: 5vh;
+        }
+
+        #social_box_group {
+            margin-top: 5vh;
+            display: flex;
+        }
+
+        .socialimg {
+            border: 1px solid rgb(116, 116, 116);
+            padding: 0;
+        }
+
+        .socialimg h4 {
+            text-align: left;
+        }
+
+        /* container - SOCIAL */
+    </style>
+</head>
+
+<body>
+    <!-- <header>
+        <div id="header_content">
+            <img id="logo" src="../220510/images/JW메디칼 로고.jpg" alt="JW메디칼로고">
+            <ul id="gnb">
+                <li><a href="#">회사소개</a></li>
+                <li><a href="#">제품안내</a></li>
+                <li><a href="#">투자안내</a></li>
+                <li><a href="#">사회공헌</a></li>
+                <li><a href="#">고객지원</a></li>
+            </ul>
+            <ul id="register">
+                <li><a href=""><img src="../220510/images/user.png" alt="사용자"></a></li>
+                <li><a href=""><img src="../220510/images/pin.png" alt="위치"></a></li>
+            </ul>
+        </div>
+        <div id="main_view">
+            <div class="txt" id="main_img">
+                <p class="main_txt">생명을 지키기 위한 위대한 여정 <br> JW메디컬이 함께합니다.</p>
+                <p class="sub_txt">JW메디칼은 70년 역사를 이어온 JW그룹의 사업회사로써, 필수 의료기기의 국산화에 앞장서 왔으며,<br> 해외 일류기업의 첨단 의료기기를 공급하여 국내
+                    의료서비스 선진화를 이끄는 의료기기 전문기업으로 발전</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="subtxt1">
+            <h1>내일로 개척하는 헬스케어 리더</h1>
+            <p>건강한 선물을 의미하는 'JW Health Ribbon'은 인류의 건강한 삶을 위해<br>쉼없이 노력하는 헬스케어 전문기업</p>
+            <button type="button">Lean More</button>
+        </section>
+        <section id="PRODUCT">
+            <h1>PRODUCT</h1>
+            <p>우리의 더 나은 내일을 위해 영역의 경계를 넘나들어 혁신을 선도하고, 인류의 건강하고 행복한 일상을 만듭니다.</p>
+            <table>
+                <tr>
+                    <td><img src=".//images/ARIETTA_50.jpg" alt="Ultrasound"></td>
+                    <td id="productcontent">
+                        <h2>고객의 든든한 파트너</h2>
+                        <p id="producttxt">정직과 신뢰, 건강을 최우선으로 생각하며 고객과 함께 합니다.</p>
+                        <button type="button">GO</button>
+                    </td>
+                    <td><img src=".//images/Breast_Mamography_-_3Dimensions.jpg" alt="Mammography"></td>
+                </tr>
+                <tr>
+                    <td><img src=".//images/DR_-_DRX-Ascend.jpg" alt="X-ray"></td>
+                    <td><img src=".//images/Extremity_CT_Onsight_3D.jpg" alt="CT"></td>
+                    <td><img src=".//images/smart_01.png" alt="MRI"></td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="SOCIALCONTRIBUTION">
+            <h1>SOCIAL CONTRIBUTION</h1>
+            <p>중앙학술복지재단</p>
+            <p>생명존중의 정신을 바탕으로 기업의 사회적 책임을 다하기 위하여 설립한 공익법인</p>
+
+            <div id="socialimggroup">
+                <figure class="socialimg">
+                    <img id="" src=".//images/학술시상.png">
+                    <figcaption>
+                        <h4>학술시상</h4>
+                        <p>국적과 민족을 초월하여 고통받는 이웃들에게 우리 사회를 따뜻하게 만들기 위해 노력합니다.</p>
+                    </figcaption>
+                </figure>
+                <figure class="socialimg">
+                    <img id="" src=".//images/wheelchair.png">
+                    <figcaption>
+                        <h4>장애인</h4>
+                        <p>장애 예술가들의 재능을 발굴하여 성장할 수 있는 발판을 마련하고자 공모전을 개최합니다.</p>
+                    </figcaption>
+                </figure>
+                <figure class="socialimg">
+                    <img id="" src=".//images/society.png">
+                    <figcaption>
+                        <h4>사회</h4>
+                        <p>재단에서 후원하고 있는 탈북청년과 임직원으로 구성된 봉사단이 봉사를 하고 있습니다.</p>
+                    </figcaption>
+                </figure>
+                <figure class="socialimg">
+                    <img id="" src=".//images/artist.png">
+                    <figcaption>
+                        <h4>인재육성</h4>
+                        <p>북한 이탈 청년들에게 장학급을 지원하고 훌륭한 재목이 될 수 있도록 후원하고 있습니다.</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section>
+            <div id="main_view2">
+                <div class="txt" id="sub_img">
+                    <p class="main_txt">생명을 지키기 위한 위대한 여정 <br> JW메디컬이 함께합니다.</p>
+                    <p class="sub_txt">JW메디칼은 70년 역사를 이어온 JW그룹의 사업회사로써, 필수 의료기기의 국산화에 앞장서 왔으며,<br> 해외 일류기업의 첨단 의료기기를
+                        공급하여 국내
+                        의료서비스 선진화를 이끄는 의료기기 전문기업으로 발전</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="CSCENTER">
+            <h1>CS CENTER</h1>
+            <p>생명을 지키기 위한 위대한 여정, JW메디컬이 함께 합니다.</p>
+            <table id="Notice">
+                <tr>
+                    <td><a href="#">공지사항</a></td>
+                    <td><a href="#">더보기</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <ul>
+                            <li><a href="#">새로운 공지사항 알려드립니다.</a></li>
+                            <li><a href="#">새로운 공지사항 알려드립니다.</a></li>
+                            <li><a href="#">새로운 공지사항 알려드립니다.</a></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li><a href="#">2019-06-19</a></li>
+                            <li><a href="#">2019-06-19</a></li>
+                            <li><a href="#">2019-06-19</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            <ul id="NoticeSub">
+                <li>
+                    <a href="#">
+                        <p>묻고답하기</p>
+                        <img src="./images/icons8-callback-50.png" alt="call">
+                        <p>문의사항을 남기시면<br>친절히 답변드립니다.</p>
+                    </a>
+                </li>
+                <li><a href="#">
+                        <p>채용안내</p>
+                        <img src="./images/icons8-group-50.png" alt="group">
+                        <p>당사와 함께 할 수 있는<br>인재를 모집합니다.</p>
+                    </a>
+                </li>
+                <li><a href="#">
+                        <p>오시는길</p>
+                        <img src="./images/icons8-map-50.png" alt="map">
+                        <p>당사의 약도 및 연락처를<br>보실 수 있습니다.</p>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="#">홈</a></li>
+            <li><a href="#">회사소개</a></li>
+            <li><a href="#">개인정보보호정책</a></li>
+            <li><a href="#">이메일무단수집거부</a></li>
+            <li><a href="#">묻고답하기</a></li>
+            <li><a href="#">오시는길</a></li>
+        </ul>
+        <div id="companyinfo">
+            <p>회사 : JW메디칼 | 대표 : 함은경 | 주소 : 서울특별시 서초구 남부순환로 2477 | 고객지원 : 02-2109-7700 | FAX : 02-852-0565</p>
+            <p>EMAIL : web@jw-medical.co.kr | 사업자등록번호 : 108-81-73179</p>
+            <p>COPYRIGHT(C) JW메디칼 ALL RIGHT RESERVED</p>
+        </div>
+        <div id="socialmedia">
+            <a href="#"><img src="./images/facebooklogo.png" alt=""></a>
+            <a href="#"><img src="./images/bandlofo.png" alt=""></a>
+            <a href="#"><img src="./images/instagramlogo.png" alt=""></a>
+            <a href="#"><img src="./images/kakaostorylogo.png" alt=""></a>
+        </div>
+    </footer> -->
+    <div id="header">
+        <div id="header_content">
+            <div id="logo">
+                <img src="./images/JW메디칼 로고.jpg" alt="logo">
+            </div>
+            <div class="list">
+                <ul id="gnb">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">제품안내</a></li>
+                    <li><a href="#">투자안내</a></li>
+                    <li><a href="#">사회공헌</a></li>
+                    <li><a href="#">고객지원</a></li>
+                </ul>
+            </div>
+            <div class="list">
+                <ul id="register">
+                    <li class="register_img"><a href="#"><img src="./images/user.png" alt="user"></a></li>
+                    <li class="register_img"><a href="#"><img src="./images/pin.png" alt="pin"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="header_bg">
+            <div id="header_bg_txt">
+                <h2>생명을 지키기 위한 위대한 여정 <br> JW메디컬이 함께합니다.</h2>
+                <p>JW메디칼은 70년 역사를 이어온 JW그룹의 사업회사로써, 필수 의료기기의 국산화에 앞장서 왔으며,<br> 해외 일류기업의 첨단 의료기기를 공급하여 국내
+                    의료서비스 선진화를 이끄는 의료기기 전문기업으로 발전</p>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+        <div class="container_txt" id="container_txt">
+            <h2>내일로 개척하는 헬스케어 리더</h2>
+            <p>건강한 선물을 의미하는 'JW Health Ribbon'은 인류의 건강한 삶을 위해<br>쉼없이 노력하는 헬스케어 전문기업</p>
+            <input type="button" value="Lean More">
+        </div>
+        <div id="container_product">
+            <div id="container_product_content">
+                <div id="product_txt">
+                    <h2>PRODUCT</h2>
+                    <p>우리의 더 나은 내일을 위해 영역의 경계를 넘나들어 <br> 혁신을 선도하고, 인류의 건강하고 행복한 일상을 만듭니다.</p>
+                </div>
+                <div id="product_img">
+                    <table>
+                        <tr>
+                            <td><img src=".//images/ARIETTA_50.jpg" alt="Ultrasound"></td>
+                            <td id="productcontent">
+                                <h2>고객의 든든한 파트너</h2>
+                                <p id="producttxt">정직과 신뢰, 건강을 최우선으로 <br>생각하며 고객과 함께 합니다.</p>
+                                <input type="button" value="GO"></input>
+                            </td>
+                            <td><img src=".//images/Breast_Mamography_-_3Dimensions.jpg" alt="Mammography"></td>
+                        </tr>
+                        <tr>
+                            <td><img src=".//images/DR_-_DRX-Ascend.jpg" alt="X-ray"></td>
+                            <td><img src=".//images/Extremity_CT_Onsight_3D.jpg" alt="CT"></td>
+                            <td><img src=".//images/smart_01.png" alt="MRI"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="container_social">
+            <div class="container_txt" id="social_txt">
+                <h2>SOCIAL CONTRIBUTION</h2>
+                <p>중외학술복지재단 <br> 생명존중의 정신을 바탕으로 기업의 사회적 책임을 다하기 위하여 설립한 공익법인</p>
+            </div>
+            <div id="social_box_group">
+                <figure class="socialimg">
+                    <img id="" src=".//images/학술시상.png">
+                    <figcaption>
+                        <h4>학술시상</h4>
+                        <p>국적과 민족을 초월하여 고통받는 이웃들에게 우리 사회를 따뜻하게 만들기 위해 노력합니다.</p>
+                    </figcaption>
+                </figure>
+                <figure class="socialimg">
+                    <img id="" src=".//images/wheelchair.png">
+                    <figcaption>
+                        <h4>장애인</h4>
+                        <p>장애 예술가들의 재능을 발굴하여 성장할 수 있는 발판을 마련하고자 공모전을 개최합니다.</p>
+                    </figcaption>
+                </figure>
+                <figure class="socialimg">
+                    <img id="" src=".//images/society.png">
+                    <figcaption>
+                        <h4>사회</h4>
+                        <p>재단에서 후원하고 있는 탈북청년과 임직원으로 구성된 봉사단이 봉사를 하고 있습니다.</p>
+                    </figcaption>
+                </figure>
+                <figure class="socialimg">
+                    <img id="" src=".//images/artist.png">
+                    <figcaption>
+                        <h4>인재육성</h4>
+                        <p>북한 이탈 청년들에게 장학급을 지원하고 훌륭한 재목이 될 수 있도록 후원하고 있습니다.</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+</body>
+
+</html>
